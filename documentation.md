@@ -52,4 +52,7 @@ We prioritize the TypeScript repositories first due to **team familiarity** and 
 
 The primary goal for unification is to ensure all core repositories can achieve and maintain **$100\%$ documentation coverage** via their respective generators (TypeDoc/Sphinx). The next steps are focused on **tooling fixes and code documentation updates**.
 
+**Continuous Integration (CI) for Publishing:** **Crucial Step**
+To make the documentation accessible and serve as the final, official source of truth, **all documentation-enabled repositories (TypeDoc and Sphinx)** must be configured to automatically publish their generated output to **GitHub Pages** upon successful merge to the `main` branch. This requires adding a dedicated CI workflow (e.g., `.github/workflows/docs.yml`) that uses the `actions/deploy-pages` action. This step ensures that the documentation is always current with the latest codebase.
+
 ---
