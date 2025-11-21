@@ -9,27 +9,32 @@
 
 This table focuses on the core target repositories (utils, client-generators, and subscribers), summarizing the tooling found, build status, estimated coverage, and the resulting priority for unification effort.
 
-| Repository                      | Language   | Category         | Tooling Status / Est. Coverage %      | **Priority Rank** | Next Step for Unification                                            |
-| :------------------------------ | :--------- | :--------------- | :------------------------------------ | :---------------- | :------------------------------------------------------------------- |
-| **algokit-utils-py**            | Python     | Utils            | **Sphinx Config Found** / 20%         | **Medium**        | Fix Sphinx configuration/build script to generate output.            |
-| **algokit-utils-ts**            | TypeScript | Utils            | **TypeDoc Config Found** / 88%        | **High**          | **CRITICAL: Upgrade TypeDoc and plugins.** Implement CI/CD.          |
-| **algokit-core**                | TypeScript | Utils            | **MD Book Config** / 30%              | **Medium**        | **DECISION POINT:** Migrate to TypeDoc or standardize MD Book setup. |
-| **algokit-client-generator-py** | Python     | Client-Generator | **No Sphinx Config** / 15%            | **High**          | Install Sphinx and setup basic API documentation.                    |
-| **algokit-client-generator-ts** | TypeScript | Client-Generator | **No TypeDoc Installed/Config** / 40% | **High**          | Install TypeDoc and establish basic configuration.                   |
-| **algokit-subscriber-py**       | Python     | Subscriber       | **Sphinx Config Found** / 60%         | **Low**           | Implement automated deployment/hosting.                              |
-| **algokit-subscriber-ts**       | TypeScript | Subscriber       | **TypeDoc Config Found** / 55%        | **High**          | **CRITICAL: Upgrade TypeDoc and plugins.** Implement CI/CD.          |
-| **algokit-utils-ts-debug**      | TypeScript | Utils            | **TypeDoc Config Found** / 85%        | **High**          | **CRITICAL: Upgrade TypeDoc and plugins.** Implement CI/CD.          |
+| Repository                      | Language   | Category         | Tooling Status / Est. Coverage %      | **Priority Rank** | Next Step for Unification                                                        |
+| :------------------------------ | :--------- | :--------------- | :------------------------------------ | :---------------- | :------------------------------------------------------------------------------- |
+| **algokit-subscriber-py**       | Python     | Subscriber       | **Sphinx Config Found** / 60%         | **Low**           | Update Python code to achieve 100% coverage.                                     |
+| **algokit-utils-ts**            | TypeScript | Utils            | **TypeDoc Config Found** / 88%        | **Medium**        | **Action:** Update TypeDoc/plugins, update code to achieve 100% coverage.        |
+| **algokit-subscriber-ts**       | TypeScript | Subscriber       | **TypeDoc Config Found** / 55%        | **Medium**        | **Action:** Update TypeDoc/plugins, update code to achieve 100% coverage.        |
+| **algokit-utils-ts-debug**      | TypeScript | Utils            | **TypeDoc Config Found** / 85%        | **Medium**        | **Action:** Update TypeDoc/plugins, update code to achieve 100% coverage.        |
+| **algokit-utils-py**            | Python     | Utils            | **Sphinx Config Found** / 20%         | **Medium**        | Fix Sphinx configuration/build script. Update code for 100% coverage.            |
+| **algokit-core**                | TypeScript | Utils            | **MD Book Config** / 30%              | **Medium**        | **DECISION POINT:** Migrate to TypeDoc or standardize MD Book setup.             |
+| **algokit-client-generator-ts** | TypeScript | Client-Generator | **No TypeDoc Installed/Config** / 40% | **High**          | Install TypeDoc, establish configuration, and update code for 100% coverage.     |
+| **algokit-client-generator-py** | Python     | Client-Generator | **No Sphinx Config** / 15%            | **High**          | Install Sphinx and setup basic API documentation. Update code for 100% coverage. |
 
 ---
 
-## 2. Prioritized List: Low-Hanging Fruit & Critical Tooling Updates (AC #2) 🥇
+## 2. Prioritized List: Low-Hanging Fruit & Documentation Updates (AC #2) 🥇
 
-These repositories are prioritized for the first phase. The TS repos are moved to **High Priority** to address their outdated/broken tooling before they can be deployed.
+These repositories are prioritized for the first phase, focusing on those with existing, functional tooling first.
 
-1.  **`algokit-subscriber-py`** (Python Subscriber, 60% covered): **Tooling is functional.** Ready for hosting pipeline setup (Low-Hanging Fruit).
-2.  **`algokit-utils-ts`** (TypeScript Utility, **88% covered**): **CRITICAL:** **Upgrade TypeDoc and replace `typedoc-plugin-markdown`** to enable functional builds. Once fixed, ready for hosting pipeline setup.
-3.  **`algokit-subscriber-ts`** (TypeScript Subscriber, 55% covered): **CRITICAL:** **Upgrade TypeDoc and replace broken plugin** to enable functional builds. Once fixed, ready for hosting pipeline setup.
-4.  **`algokit-utils-ts-debug`** (TypeScript Utility, 85% covered): **CRITICAL:** **Upgrade TypeDoc and replace broken plugin** to enable functional builds. Once fixed, ready for hosting pipeline setup.
+### Phase 1: Low-Hanging Fruit (Deployment Ready)
+
+1.  **`algokit-subscriber-py`** (Python Subscriber, 60% covered): **Tooling is functional.** Next step: Update code to reach **100% documentation coverage**.
+2.  **`algokit-utils-ts`** (TypeScript Utility, **88% covered**): **Tooling present.** Next step: Update TypeDoc packages/plugins and update code to reach **100% documentation coverage**.
+
+### Phase 2: Tooling/Coverage Updates
+
+3.  **`algokit-utils-ts-debug`** (TypeScript Utility, 85% covered): Update TypeDoc packages/plugins and update code to reach **100% documentation coverage**.
+4.  **`algokit-subscriber-ts`** (TypeScript Subscriber, 55% covered): Update TypeDoc packages/plugins and update code to reach **100% documentation coverage**.
 
 ---
 
@@ -37,18 +42,15 @@ These repositories are prioritized for the first phase. The TS repos are moved t
 
 ### Tool Status Summary:
 
-- **TypeDoc (TS):** Tooling is present but **outdated and dysfunctional** due to dependency conflicts (e.g., `typedoc-plugin-markdown` breakage). This requires an immediate **upgrade and dependency cleanup** across all core TS libraries before hosting can be implemented.
-  - **New Suggestion:** Adopt **`typedoc-plugin-coverage`** in CI/CD to ensure API documentation coverage remains at high levels (e.g., $80\%+$), enforcing quality across the unification effort.
-- **Sphinx (Python):** Tooling is **inconsistent**. Some repos are functional (`algokit-subscriber-py`), while others require configuration debugging (`algokit-utils-py`) before they can be deployed.
-- **MD Book:** The presence of MD Book in `algokit-core` introduces a deviation from the established TypeDoc/Sphinx standard. A decision on **migration vs. standardization** for MD Book is required for a complete unification plan.
+- **TypeDoc (TS):** Tooling is present but needs **package updates** across all core TS libraries to resolve dependency conflicts (e.g., outdated TypeDoc/plugin versions) and ensure functional builds.
+  - **Recommendation:** Leverage **`typedoc-plugin-coverage`** to enforce and measure progress toward the **$100\%$ documentation coverage** goal.
+- **Sphinx (Python):** Tooling is **inconsistent**. `algokit-subscriber-py` is ready for coverage work, while `algokit-utils-py` requires initial configuration fixes.
+- **MD Book:** The presence of MD Book in `algokit-core` introduces a deviation. A decision on **migration vs. standardization** is required.
 
 ### Standard Unification Requirement:
 
-To achieve standard documentation (webpage) across the core repos, the single most critical next step is:
-
-1.  **Tooling Remediation:** **Upgrade/Fix all TypeDoc installations and plugins** (TS repos).
-2.  **Unified CI/CD:** Implement a unified build and hosting CI/CD pipeline (e.g., GH Pages) for both TypeDoc (TS) and Sphinx (Python) output for all functional repos.
+The primary goal for unification is to ensure all core repositories can achieve and maintain **$100\%$ documentation coverage** via their respective generators (TypeDoc/Sphinx). The next steps are focused on **tooling fixes and code documentation updates**.
 
 ---
 
-Would you like me to draft the action plan for **upgrading the TypeDoc tooling** in **`algokit-utils-ts`**?
+Would you like me to draft the specific steps for **updating the TypeDoc packages and achieving $100\%$ coverage** in the first TS priority item, **`algokit-utils-ts`**?
